@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="home-slider owl-carousel">
+
+    <div class="slider-item" style="background-image: url(../../static/images/bg_3.jpg);"
+         data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row slider-text justify-content-center align-items-center">
+
+                <div class="col-md-7 col-sm-12 text-center ftco-animate">
+                    <h1 class="mb-3 mt-5 bread">Order Online</h1>
+                    <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'home_page' %}">Home</a></span>
+                        <span>Shop</span>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="ftco-menu mb-5 pb-5">
+    <div class="container">
+        <div class="row d-md-flex">
+            <div class="col-lg-12 ftco-animate p-md-5">
+                <div class="row">
+                    <div class="col-md-12 nav-link-wrap mb-5">
+                        <div class="nav ftco-animate nav-pills justify-content-center" id="v-pills-tab" role="tablist"
+                             aria-orientation="vertical">
+                            {% for category in categories %}
+                                {% if category.slug == 'breakfast' %}
+                                <a class="nav-link active" id="{{ category }}-tab" data-toggle="pill" href="#{{ category }}"
+                                   role="tab" aria-controls="v-pills-1" aria-selected="true">{{ category }}</a>
+                                {% else %}
+                                <a class="nav-link" id="{{ category }}-tab" data-toggle="pill" href="#{{ category }}" role="tab"
+                                   aria-controls="v-pills-1" aria-selected="false">{{ category }}</a>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-md-12 d-flex align-items-center">
+
+                        <div class="tab-content ftco-animate" id="v-pills-tabContent">
+                        {% for category in categories %}
+                            {% if category.slug == 'breakfast' %}
+                            <div class="tab-pane fade show active" id="{{ category }}" role="tabpanel"
+                                 aria-labelledby="{{ category }}-tab">
+                                <div class="row">
+                                    {% for product in products %}
+                                        {% if product.category == category %}
+                                            <div class="col-md-4">
+                                                <div class="menu-entry">
+                                                    <a href="{{ product.get_absolute_url }}" class="img">
+                                                        <img src="{{ product.image_url|default_if_none:'#' }}" alt="" class="img">
+                                                    </a>
+                                                    <div class="text text-center pt-4">
+                                                        <h3><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h3>
+                                                        <p>{{ product.description|truncatewords:10 }}</p>
+                                                        <p class="price"><span>${{ product.price }}</span></p>
+                                                        <p><a href="../../templates/cart.html" class="btn btn-primary btn-outline-primary">Add
+                                                            to Cart</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% elif category.slug == 'drinks' or category.slug == 'coffee' %}
+                            <div class="tab-pane fade" id="{{ category }}" role="tabpanel"
+                                 aria-labelledby="{{ category }}-tab">
+                                <div class="row">
+                                    {% for product in products %}
+                                        {% if product.category == category %}
+                                            <div class="col-md-3">
+                                                <div class="menu-entry">
+                                                    <a href="{{ product.get_absolute_url }}" class="img">
+                                                        <img src="{{ product.image_url|default_if_none:'#' }}" alt="" class="img">
+                                                    </a>
+                                                    <div class="text text-center pt-4">
+                                                        <h3><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h3>
+                                                        <p>{{ product.description|truncatewords:10 }}</p>
+                                                        <p class="price"><span>{{ product.price }}</span></p>
+                                                        <p><a href="../../templates/cart.html" class="btn btn-primary btn-outline-primary">Add
+                                                            to Cart</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% else %}
+                            <div class="tab-pane fade" id="{{ category }}" role="tabpanel"
+                                 aria-labelledby="{{ category }}-tab">
+                                <div class="row">
+                                    {% for product in products %}
+                                        {% if product.category == category %}
+                                            <div class="col-md-4">
+                                                <div class="menu-entry">
+                                                    <a href="{{ product.get_absolute_url }}" class="img">
+                                                        <img src="{{ product.image_url|default_if_none:'#' }}" alt="" class="img">
+                                                    </a>
+                                                    <div class="text text-center pt-4">
+                                                        <h3><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h3>
+                                                        <p>{{ product.description|truncatewords:10 }}</p>
+                                                        <p class="price"><span>{{ product.price }}</span></p>
+                                                        <p><a href="../../templates/cart.html" class="btn btn-primary btn-outline-primary">Add
+                                                            to Cart</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

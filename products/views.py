@@ -4,8 +4,23 @@ from django.views.generic import ListView, DetailView
 from .models import Category, Product
 
 
+class MenuListView(ListView):
+    template_name = 'menu.html'
+
+    def get_queryset(self):
+        return Product.objects.filter(available=True)
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(MenuListView, self).get_context_data(**kwargs)
+        products = self.get_queryset()
+        categories = Category.objects.all()
+        context['products'] = products
+        context['categories'] = categories
+        return context
+
+
 class ProductListView(ListView):
-    template_name = ''
+    template_name = 'shop.html'
     context_object_name = 'products'
 
     def get_queryset(self):
@@ -32,12 +47,15 @@ class ProductListView(ListView):
 class ProductDetailsView(DetailView):
     model = Product
     context_object_name = 'products'
-    template_name = ''
+    template_name = 'product-single.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         product = get_object_or_404(self.model,
                                     slug=self.kwargs.get('slug'),
                                     available=True)
+        products = Product.objects.filter(category=product.category)
+        related_products = [p for p in products if p.id != product.id][:4]
+        context['related_products'] = related_products
         context['product'] = product
         return context
