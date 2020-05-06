@@ -6,5 +6,6 @@
 Basic models:<br />
 - `Product`
 - `Category`
+- `Cart`
 
 Other functionality:<br />

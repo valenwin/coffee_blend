@@ -25,6 +25,7 @@ urlpatterns = [
     path('', BaseView.as_view(), name='home_page'),
 
     path('products/', include(('products.urls', 'products'), namespace='products')),
+    path('cart/', include(('cart.urls', 'cart'), namespace='cart')),
 
 ]
 

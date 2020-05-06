@@ -128,6 +128,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+# create cart
+CART_SESSION_ID = 'cart'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
