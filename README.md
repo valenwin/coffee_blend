@@ -7,5 +7,7 @@ Basic models:<br />
 - `Product`
 - `Category`
 - `Cart`
+- `Order`
+- `OrderItem`
 
 Other functionality:<br />
