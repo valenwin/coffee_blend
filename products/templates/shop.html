@@ -103,9 +103,15 @@
                                                                     <p>{{ product.description|truncatewords:10 }}</p>
                                                                     <p class="price"><span>{{ product.price }}</span>
                                                                     </p>
-                                                                    <p><a href="../../templates/cart.html"
-                                                                          class="btn btn-primary btn-outline-primary">Add
-                                                                        to Cart</a></p>
+                                                                    <form action="{% url "cart:cart_add" product.id %}"
+                                                                          method="post">
+                                                                        {% csrf_token %}
+                                                                        {{ cart_product_form }}
+                                                                        <button type="submit"
+                                                                                class="btn btn-primary btn-outline-primary">
+                                                                            Add to cart
+                                                                        </button>
+                                                                    </form>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -132,9 +138,15 @@
                                                                     <p>{{ product.description|truncatewords:10 }}</p>
                                                                     <p class="price"><span>{{ product.price }}</span>
                                                                     </p>
-                                                                    <p><a href="../../templates/cart.html"
-                                                                          class="btn btn-primary btn-outline-primary">Add
-                                                                        to Cart</a></p>
+                                                                    <form action="{% url "cart:cart_add" product.id %}"
+                                                                          method="post">
+                                                                        {% csrf_token %}
+                                                                        {{ cart_product_form }}
+                                                                        <button type="submit"
+                                                                                class="btn btn-primary btn-outline-primary">
+                                                                            Add to cart
+                                                                        </button>
+                                                                    </form>
                                                                 </div>
                                                             </div>
                                                         </div>

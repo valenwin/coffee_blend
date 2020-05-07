@@ -11,3 +11,4 @@ Basic models:<br />
 - `OrderItem`
 
 Other functionality:<br />
+- `Celery` launch asynchronous task while order created
