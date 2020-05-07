@@ -76,6 +76,8 @@
                                         <td class="total">{{ item.total_price }}</td>
                                     </tr><!-- END TR-->
                                 {% endwith %}
+                            {% empty %}
+                                <tr><td>Your Cart is empty.</td></tr>
                             {% endfor %}
                             </tbody>
                         </table>
@@ -110,11 +112,14 @@
                         </p>
                     </div>
                     <p class="text-center">
-                        <a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a>
+                        <a href="{% url 'orders:order_create' %}" class="btn btn-primary py-3 px-4">
+                            Proceed to Checkout
+                        </a>
                     </p>
                     <p class="text-center">
-                        <a href="{% url 'products:product_list' %}" class="btn btn-primary py-3 px-4">Continue
-                            Shopping</a>
+                        <a href="{% url 'products:product_list' %}" class="btn btn-primary py-3 px-4">
+                            Continue Shopping
+                        </a>
                     </p>
                 </div>
             </div>

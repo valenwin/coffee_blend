@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="home-slider owl-carousel">
+
+        <div class="slider-item" style="background-image: url(../../static/images/bg_3.jpg);"
+             data-stellar-background-ratio="0.5">
+            <div class="overlay"></div>
+            <div class="container">
+                <div class="row slider-text justify-content-center align-items-center">
+
+                    <div class="col-md-7 col-sm-12 text-center ftco-animate">
+                        <h1 class="mb-3 mt-5 bread">Checkout</h1>
+                        <p class="breadcrumbs">
+                            <span class="mr-2"><a href="{% url 'home_page' %}">Home</a></span>
+                            <span>Checkout</span>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 ftco-animate">
+
+                    <form action="." method="post" class="billing-form ftco-bg-dark p-3 p-md-5">
+                        <h3 class="mb-4 billing-heading">Billing Details</h3>
+                        <div class="row align-items-end">
+                            {% csrf_token %}
+                            {% for field in form %}
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ field.label }}
+                                        {{ field }}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            <div class="w-100"></div>
+                            <p style="margin-left: 15.5px;">
+                                <button type="submit" class="btn btn-primary py-3 px-4">Place an order</button>
+                            </p>
+                        </div>
+                    </form><!-- END -->
+
+                    <div class="row mt-5 pt-3 d-flex">
+                        <div class="col-md-6 d-flex">
+                            <div class="cart-detail cart-total ftco-bg-dark p-3 p-md-4">
+                                <h3 class="billing-heading mb-4">Cart Total</h3>
+                                <p class="d-flex">
+                                    <span>Quantity</span>
+                                    <span>{{ cart.get_total_quantity }}</span>
+                                </p>
+                                <p class="d-flex">
+                                    <span>Subtotal</span>
+                                    <span>${{ cart.get_total_price }}</span>
+                                </p>
+                                <p class="d-flex">
+                                    <span>Delivery</span>
+                                    <span>$0.00</span>
+                                </p>
+
+                                <p class="d-flex">
+                                    <span>Discount</span>
+                                    <span>$3.00</span>
+                                </p>
+                                <hr>
+                                <p class="d-flex total-price">
+                                    <span>Total</span>
+                                    <span>${{ cart.get_total_price }}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="cart-detail ftco-bg-dark p-3 p-md-4">
+                                <h3 class="billing-heading mb-4">Payment Method</h3>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio" class="mr-2"> Direct Bank Tranfer</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio" class="mr-2"> Check
+                                                Payment</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="radio">
+                                            <label><input type="radio" name="optradio" class="mr-2"> Paypal</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" value="" class="mr-2"> I have read and accept
+                                                the terms and conditions</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- .col-md-8 -->
+
+
+                <div class="col-xl-4 sidebar ftco-animate">
+                    <div class="sidebar-box">
+                        <div class="sidebar-box ftco-animate" style="padding-left: 0;">
+                            <div class="categories">
+                                <h3>Order Items</h3>
+                                <ol style="padding-left: 0;">
+                                    {% for item in cart %}
+                                        <li>
+                                            <a href="{{ item.product.get_absolute_url }}">
+                                                {{ item.product.name }} x {{ item.quantity }}
+                                                <span>${{ item.total_price }}</span>
+                                            </a>
+                                        </li>
+                                    {% empty %}
+                                        <li>Your order is empty.</li>
+                                    {% endfor %}
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-box ftco-animate">
+                        <h3>Paragraph</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem
+                            necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente
+                            consectetur similique, inventore eos fugit cupiditate numquam!</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section> <!-- .section -->
+{% endblock %}
