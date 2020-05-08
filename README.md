@@ -9,7 +9,7 @@ Basic models:<br />
 - `Cart`
 - `Order`
 - `OrderItem`
-- `Payment`
+- `Payment` (using Braintree for order payment)
 
 Other functionality:<br />
 - `Celery` launch asynchronous task while order created
