@@ -1,8 +1,20 @@
-from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, DetailView
+from django.shortcuts import get_object_or_404
+from django.views.generic import ListView, DetailView, TemplateView
 
 from cart.forms import CartAddProductForm
 from .models import Category, Product
+
+
+class BaseView(TemplateView):
+    template_name = 'base.html'
+
+
+class ServicesView(TemplateView):
+    template_name = 'services.html'
+
+
+class AboutView(TemplateView):
+    template_name = 'about.html'
 
 
 class MenuListView(ListView):

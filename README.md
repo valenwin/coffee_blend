@@ -9,6 +9,7 @@ Basic models:<br />
 - `Cart`
 - `Order`
 - `OrderItem`
+- `Payment`
 
 Other functionality:<br />
 - `Celery` launch asynchronous task while order created

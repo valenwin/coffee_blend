@@ -18,15 +18,19 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-from .views import BaseView
+from products.views import BaseView, AboutView, ServicesView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     path('', BaseView.as_view(), name='home_page'),
+    path('about/', AboutView.as_view(), name='about'),
+    path('services/', ServicesView.as_view(), name='services'),
 
     path('products/', include(('products.urls', 'products'), namespace='products')),
     path('cart/', include(('cart.urls', 'cart'), namespace='cart')),
     path('orders/', include(('orders.urls', 'orders'), namespace='orders')),
+    path('payment/', include(('payment.urls', 'payment'), namespace='payment')),
 
 ]
 

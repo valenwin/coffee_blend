@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'products',
     'cart',
     'orders',
+    'payment',
+
 
 ]
 
@@ -146,3 +148,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # sent email while order created
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Braintree settings
+BRAINTREE_MERCHANT_ID = 'ywkkxzd848vp939s'  # Merchant ID
+BRAINTREE_PUBLIC_KEY = '5vchttnfhkgty79t'   # Public Key
+BRAINTREE_PRIVATE_KEY = '477844b77a2a3016159ce5e4cc5ea9dd'  # Private key
+
+import braintree
+
+BRAINTREE_CONF = braintree.Configuration(
+    braintree.Environment.Sandbox,
+    BRAINTREE_MERCHANT_ID,
+    BRAINTREE_PUBLIC_KEY,
+    BRAINTREE_PRIVATE_KEY
+)
