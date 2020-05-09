@@ -18,3 +18,4 @@ Other functionality:<br />
     - `admin/order/<int:order_id>/`
 - `PDF` link for creation invoice in PDF format (on admin panel)
     - `admin/order/<int:order_id>/pdf/`
+- `Sent PDF` to email while order was created

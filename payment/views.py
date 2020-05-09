@@ -40,6 +40,7 @@ def payment_process(request):
             payment_pdf_to_email(order)
             return redirect('payment:done')
         else:
+            payment_pdf_to_email(order)
             return redirect('payment:canceled')
     else:
         # generate token
