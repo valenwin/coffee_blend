@@ -6,6 +6,8 @@ from orders.models import Order
 from .tasks import payment_completed
 
 # instantiate Braintree payment gateway
+from .utils import payment_pdf_to_email
+
 gateway = braintree.BraintreeGateway(settings.BRAINTREE_CONF)
 
 
@@ -31,8 +33,11 @@ def payment_process(request):
             # store the unique transaction id
             order.braintree_id = result.transaction.id
             order.save()
+
             # launch asynchronous task
             # payment_completed.delay(order.id)
+
+            payment_pdf_to_email(order)
             return redirect('payment:done')
         else:
             return redirect('payment:canceled')
