@@ -7,7 +7,7 @@ from django.template.loader import render_to_string
 
 
 def payment_pdf_to_email(order):
-    subject = 'My Shop - Invoice no. {}'.format(order.id)
+    subject = 'Coffee Blend - Invoice no. {}'.format(order.id)
     message = 'Please, find attached the invoice for your recent purchase.'
     email = EmailMessage(subject=subject,
                          body=message,

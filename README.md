@@ -9,13 +9,15 @@ Basic models:<br />
 - `Cart`
 - `Order`
 - `OrderItem`
-- `Payment` (using Braintree for order payment)
+- `Payment`
 
 Other functionality:<br />
-- `Celery` launch asynchronous task while order created
-- `Export to CSV` for orders (on admin panel)
+- `Celery` launch asynchronous task while order was created
+- `Braintree` for order payment
+    - go to `https://developers.braintreepayments.com/guides/credit-cards/testing-go-live/python` for using test card data
+- `Export to CSV` action for orders (on admin panel)
 - `View` link for order details viewing (on admin panel)
     - `admin/order/<int:order_id>/`
 - `PDF` link for creation invoice in PDF format (on admin panel)
     - `admin/order/<int:order_id>/pdf/`
-- `Sent PDF` to email while order was created
+- `Sent PDF` on email while order was created
