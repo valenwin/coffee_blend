@@ -7,6 +7,7 @@ from django.template.loader import render_to_string
 from django.urls import reverse
 
 from cart.cart import Cart
+from .tasks import order_created
 from .forms import OrderCreateForm
 from .models import OrderItem, Order
 
@@ -24,7 +25,7 @@ def order_create(request):
                                          quantity=item['quantity'])
                 cart.clear()
                 # launch asynchronous task
-                # order_created.delay(order.id)
+                order_created.delay(order.id)
                 request.session['order_id'] = order.id
                 return redirect(reverse('payment:process'))
     else:

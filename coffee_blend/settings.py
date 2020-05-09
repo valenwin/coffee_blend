@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+
 from environs import Env
 
 env = Env()
@@ -18,7 +19,6 @@ env.read_env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -31,7 +31,6 @@ SECRET_KEY = env.str('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -47,7 +46,6 @@ INSTALLED_APPS = [
     'cart',
     'orders',
     'payment',
-
 
 ]
 
@@ -83,7 +81,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'coffee_blend.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -97,7 +94,6 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -116,7 +112,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -151,7 +146,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Braintree settings
 BRAINTREE_MERCHANT_ID = 'ywkkxzd848vp939s'  # Merchant ID
-BRAINTREE_PUBLIC_KEY = '5vchttnfhkgty79t'   # Public Key
+BRAINTREE_PUBLIC_KEY = '5vchttnfhkgty79t'  # Public Key
 BRAINTREE_PRIVATE_KEY = '477844b77a2a3016159ce5e4cc5ea9dd'  # Private key
 
 import braintree
