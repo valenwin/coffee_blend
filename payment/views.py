@@ -44,6 +44,7 @@ def payment_process(request):
         return render(request,
                       'process.html',
                       {'order': order,
+                       'total_cost': total_cost,
                        'client_token': client_token})
 
 

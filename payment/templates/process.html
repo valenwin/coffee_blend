@@ -9,6 +9,7 @@
     <div class="row text-center">
         <div class="col-sm-12 col-sm-offset-3">
             <h1 class="mt-5">Pay by card</h1>
+            <h4 class="mt-5">Total cost: {{ total_cost|floatformat:"2" }}</h4>
             <form id="payment" method="post">
                 {% csrf_token %}
                 <div class="col-md-12">
