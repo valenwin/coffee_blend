@@ -56,7 +56,7 @@
                                 </p>
                                 <p class="d-flex">
                                     <span>Subtotal</span>
-                                    <span>${{ cart.get_total_price }}</span>
+                                    <span>${{ cart.get_total_price|floatformat:"2" }}</span>
                                 </p>
                                 <p class="d-flex">
                                     <span>Delivery</span>
@@ -65,12 +65,12 @@
 
                                 <p class="d-flex">
                                     <span>Discount</span>
-                                    <span>$3.00</span>
+                                    <span>${{ cart.get_discount|floatformat:"2" }}</span>
                                 </p>
                                 <hr>
                                 <p class="d-flex total-price">
                                     <span>Total</span>
-                                    <span>${{ cart.get_total_price }}</span>
+                                    <span>${{ cart.get_total_price_after_discount|floatformat:"2" }}</span>
                                 </p>
                             </div>
                         </div>

@@ -10,6 +10,7 @@ Basic models:<br />
 - `Order`
 - `OrderItem`
 - `Payment`
+- `Coupon`
 
 Other functionality:<br />
 - `Celery` launch asynchronous task while order was created
