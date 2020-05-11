@@ -34,6 +34,7 @@ urlpatterns = [
     path('payment/', include(('payment.urls', 'payment'), namespace='payment')),
     path('coupons/', include(('coupons.urls', 'coupons'), namespace='coupons')),
     path('reservation/', include(('reservation.urls', 'reservation'), namespace='reservation')),
+    path('contact/', include(('contact.urls', 'contact'), namespace='contact')),
 
 ]
 

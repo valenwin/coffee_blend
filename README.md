@@ -12,6 +12,8 @@ Basic models:<br />
 - `Payment`
 - `Coupon` (discount system)
 - `Recommender` (recommendation system of products)
+- `Reservation`
+- `ContactUs`
 
 Other functionality:<br />
 - `Celery` launch asynchronous task while order was created
