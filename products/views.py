@@ -3,7 +3,7 @@ from django.views.generic import ListView, DetailView, TemplateView
 
 from cart.forms import CartAddProductForm
 from .models import Category, Product
-
+from .recommender import Recommender
 
 class BaseView(TemplateView):
     template_name = 'base.html'
@@ -71,8 +71,13 @@ class ProductDetailsView(DetailView):
                                     slug=self.kwargs.get('slug'),
                                     available=True)
         products = Product.objects.filter(category=product.category)
+
+        r = Recommender()
+        recommended_products = r.suggest_products_for([product], 4)
+
         related_products = [p for p in products if p.id != product.id][:4]
         context['related_products'] = related_products
         context['product'] = product
         context['cart_product_form'] = cart_product_form
+        context['recommended_products'] = recommended_products
         return context

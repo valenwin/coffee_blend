@@ -10,7 +10,8 @@ Basic models:<br />
 - `Order`
 - `OrderItem`
 - `Payment`
-- `Coupon`
+- `Coupon` (discount system)
+- `Recommender` (recommendation system of products)
 
 Other functionality:<br />
 - `Celery` launch asynchronous task while order was created
@@ -26,3 +27,5 @@ Other functionality:<br />
 - `PDF` link for creation invoice in PDF format (on admin panel)
     - `admin/order/<int:order_id>/pdf/`
 - `Sent PDF` on email while order was created
+- `Redis` for recommendation system:
+    - launch Redis by `redis-server` in terminal
