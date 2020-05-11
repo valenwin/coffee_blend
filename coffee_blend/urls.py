@@ -18,12 +18,13 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-from products.views import BaseView, AboutView, ServicesView
+from products.views import base
+from products.views import AboutView, ServicesView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('', BaseView.as_view(), name='home_page'),
+    path('', base, name='home_page'),
     path('about/', AboutView.as_view(), name='about'),
     path('services/', ServicesView.as_view(), name='services'),
 
@@ -32,6 +33,7 @@ urlpatterns = [
     path('orders/', include(('orders.urls', 'orders'), namespace='orders')),
     path('payment/', include(('payment.urls', 'payment'), namespace='payment')),
     path('coupons/', include(('coupons.urls', 'coupons'), namespace='coupons')),
+    path('reservation/', include(('reservation.urls', 'reservation'), namespace='reservation')),
 
 ]
 

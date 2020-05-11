@@ -1,12 +1,17 @@
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 from django.views.generic import ListView, DetailView, TemplateView
 
 from cart.forms import CartAddProductForm
+from reservation.forms import ReserveTableForm
 from .models import Category, Product
 from .recommender import Recommender
 
-class BaseView(TemplateView):
-    template_name = 'base.html'
+
+def base(request):
+    reserve_form = ReserveTableForm()
+    return render(request, 'base.html', {
+        'reserve_form': reserve_form
+    })
 
 
 class ServicesView(TemplateView):
