@@ -4,6 +4,7 @@
 #### Django3, PostgreSQL, Celery, RabbitMQ
 
 Basic models:<br />
+
 - `Product`
 - `Category`
 - `Cart`
