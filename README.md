@@ -1,7 +1,7 @@
 # Coffee Blend online shop
 
 ## Overview
-#### Django3, PostgreSQL
+#### Django3, PostgreSQL, Celery, RabbitMQ
 
 Basic models:<br />
 - `Product`
